@@ -1,10 +1,13 @@
 import { FC, useMemo, useState } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
+import { useQuery } from 'react-query';
+import { useNavigation } from '@react-navigation/native';
 import { Points, Transactions } from './sections';
 import styles from './Dashboard.styles';
-import { useQuery } from 'react-query';
 import { getProducts } from '../../api/products';
 import { Button } from '../../components';
+import { useProductContext } from '../../context/ProductContext';
+import { Product } from '../../types';
 
 type filter = 'all' | 'positive' | 'negative';
 interface DashboardProps {}
@@ -12,10 +15,17 @@ interface DashboardProps {}
 const Dashboard: FC<DashboardProps> = () => {
   const { data, isLoading } = useQuery('products', getProducts);
   const [filter, setFilter] = useState<filter>('all');
+  const { setSelectedProduct } = useProductContext();
+  const navigation = useNavigation();
 
   const removeFilters = () => setFilter('all');
   const filterByWins = () => setFilter('positive');
   const filterByRedeemed = () => setFilter('negative');
+
+  const goToDetails = (product: Product) => {
+    setSelectedProduct(product);
+    navigation.navigate('Details');
+  };
 
   const products = useMemo(() => {
     if (filter === 'all') {
@@ -39,13 +49,15 @@ const Dashboard: FC<DashboardProps> = () => {
       <Text style={styles.message} testID="welcomeMessage">
         Bienvenido de vuelta!
       </Text>
-      <Text testID="userName" style={styles.user}>Ruben Rodriguez</Text>
+      <Text testID="userName" style={styles.user}>
+        Ruben Rodriguez
+      </Text>
       {isLoading ? (
         <ActivityIndicator style={styles.loadingContainer} size="large" />
       ) : (
         <>
           <Points month="Diciembre" points={totalPoints || 0} />
-          <Transactions products={products} />
+          <Transactions products={products} onProductPress={goToDetails} />
         </>
       )}
       {filter === 'all' ? (

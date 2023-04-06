@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { Dashboard } from './src/views';
+import { Dashboard, Details } from './src/views';
 import { ProductProvider } from './src/context/ProductContext';
 
 const queryClient = new QueryClient({
@@ -20,6 +20,7 @@ const App: FC<AppProps> = () => {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen name="Dashboard" component={Dashboard} />
+            <Stack.Screen name="Details" component={Details} />
           </Stack.Navigator>
         </NavigationContainer>
       </ProductProvider>

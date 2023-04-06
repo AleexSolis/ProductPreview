@@ -3,19 +3,18 @@ import { ScrollView, Text, View } from 'react-native';
 import styles from './Transactions.styles';
 import { Product } from '../../../../components';
 import { Product as ProductType } from '../../../../types';
-import { useProductContext } from '../../../../context/ProductContext';
 
 interface TransactionsProps {
   title?: string;
   products?: Array<ProductType>;
+  onProductPress?: (product: ProductType) => void;
 }
 
 const defaultProps = {
   title: 'Tus Movimientos',
 };
 
-const Transactions: FC<TransactionsProps> = ({ title, products }) => {
-  const { setSelectedProduct } = useProductContext();
+const Transactions: FC<TransactionsProps> = ({ title, products, onProductPress }) => {
   return (
     <View style={styles.sectionContainer}>
       <Text style={styles.title}>{title}</Text>
@@ -23,12 +22,7 @@ const Transactions: FC<TransactionsProps> = ({ title, products }) => {
         {products ? (
           <ScrollView style={styles.scrollContainer}>
             {products.map((product) => (
-              <Product
-                data={product}
-                key={product.id}
-                onPress={setSelectedProduct}
-                testID='product'
-              />
+              <Product data={product} key={product.id} onPress={onProductPress} testID="product" />
             ))}
           </ScrollView>
         ) : (
