@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import styles from './Transactions.styles';
 import { Product } from '../../../../components';
 
@@ -25,16 +25,18 @@ const Transactions: FC<TransactionsProps> = ({ title, products }) => {
     <View style={styles.sectionContainer}>
       <Text style={styles.title}>{title}</Text>
       <View style={styles.cardsContainer}>
-        {products.map((product) => (
-          <Product
-            key={product.id}
-            createdAt={new Date(product.createdAt)}
-            isRedemption={product.is_redemption}
-            name={product.product}
-            points={product.points}
-            urlImage={product.image}
-          />
-        ))}
+        <ScrollView style={styles.scrollContainer}>
+          {products.map((product) => (
+            <Product
+              key={product.id}
+              createdAt={new Date(product.createdAt)}
+              isRedemption={product.is_redemption}
+              name={product.product}
+              points={product.points}
+              urlImage={product.image}
+            />
+          ))}
+        </ScrollView>
       </View>
     </View>
   );

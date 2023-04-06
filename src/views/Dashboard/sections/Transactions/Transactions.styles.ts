@@ -2,6 +2,8 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   sectionContainer: {
+    flex: 1,
+    paddingBottom: 43,
     paddingTop: 20,
   },
   title: {
@@ -12,11 +14,14 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   cardsContainer: {
+    backgroundColor: 'white',
     borderRadius: 10,
+    flex: 1,
+  },
+  scrollContainer: {
+    marginBottom: 20,
+    marginTop: 23,
     paddingHorizontal: 15,
-    paddingTop: 28,
-    paddingBottom: 25,
-    width: '100%',
   },
 });
 
