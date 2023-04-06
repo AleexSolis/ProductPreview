@@ -12,6 +12,7 @@ interface ProductProps {
   name: string;
   onPress?: (event: GestureResponderEvent) => void;
   points: number;
+  testID?: string;
   urlImage: string;
 }
 
@@ -21,23 +22,26 @@ const Product: FC<ProductProps> = ({
   name,
   onPress,
   points,
+  testID,
   urlImage,
 }) => {
   const date = moment(createdAt).format('DD [de] MMMM, YYYY');
   const symbolColor = isRedemption ? '#FF0000' : '#00B833';
 
   return (
-    <TouchableOpacity testID='cardContainer' style={styles.container} onPress={onPress}>
+    <TouchableOpacity testID={testID || 'cardContainer'} style={styles.container} onPress={onPress}>
       <Image
         style={styles.image}
         source={{
           uri: urlImage,
         }}
-        testID='productImage'
+        testID="productImage"
       />
       <View style={styles.textContainer}>
         <Text style={styles.productName}>{name}</Text>
-        <Text testID='productDate' style={styles.productDate}>{date}</Text>
+        <Text testID="productDate" style={styles.productDate}>
+          {date}
+        </Text>
       </View>
       <View style={styles.rightContainer}>
         <View style={styles.pointsContainer}>
