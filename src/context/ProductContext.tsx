@@ -6,7 +6,7 @@ type ProductContextType = {
   setSelectedProduct: React.Dispatch<React.SetStateAction<Product | undefined>>;
 };
 
-const ProductContext = createContext<ProductContextType>({
+export const ProductContext = createContext<ProductContextType>({
   selectedProduct: undefined,
   setSelectedProduct: () => {},
 });

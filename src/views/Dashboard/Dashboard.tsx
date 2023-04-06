@@ -60,14 +60,16 @@ const Dashboard: FC<DashboardProps> = () => {
           <Transactions products={products} onProductPress={goToDetails} />
         </>
       )}
-      {filter === 'all' ? (
-        <View style={styles.buttonsContainer}>
-          <Button fontStyle={styles.button} label="Ganados" onPress={filterByWins} />
-          <Button fontStyle={styles.button} label="Canjeados" onPress={filterByRedeemed} />
-        </View>
-      ) : (
-        <Button label="Todos" onPress={removeFilters} />
-      )}
+      <View style={styles.buttonContainer}>
+        {filter === 'all' ? (
+          <View style={styles.buttonsContainer}>
+            <Button fontStyle={styles.button} label="Ganados" onPress={filterByWins} />
+            <Button fontStyle={styles.button} label="Canjeados" onPress={filterByRedeemed} />
+          </View>
+        ) : (
+          <Button label="Todos" onPress={removeFilters} />
+        )}
+      </View>
     </View>
   );
 };

@@ -22,8 +22,12 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   buttonsContainer: {
+    flex: 1,
     flexDirection: 'row',
     gap: 13,
+  },
+  buttonContainer: {
+    height: 50,
   },
   button: {
     fontStyle: 'normal',
