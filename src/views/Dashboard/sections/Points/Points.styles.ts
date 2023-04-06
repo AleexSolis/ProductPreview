@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '800',
     paddingLeft: 19,
+    textTransform: 'capitalize'
   },
   points: {
     color: 'white',

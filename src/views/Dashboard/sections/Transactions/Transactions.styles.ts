@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   sectionContainer: {
     flex: 1,
-    paddingBottom: 43,
+    paddingBottom: 20,
     paddingTop: 20,
   },
   title: {
@@ -32,6 +32,25 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     textAlign: 'center',
   },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    marginVertical: 8,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  input: {
+    flex: 1,
+    fontSize: 16,
+    marginHorizontal: 8,
+  }
 });
 
 export default styles;
