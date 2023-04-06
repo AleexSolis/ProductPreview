@@ -1,21 +1,27 @@
-import 'react-native';
 import React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { render } from '@testing-library/react-native';
-import { Dashboard } from '../../../src/views/Dashboard';
+import { Dashboard as DashboardClean } from '../../../src/views/Dashboard';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-const queryClient = new QueryClient({
-  defaultOptions: { queries: { retry: 2 } },
-});
+const queryClient = new QueryClient();
+const Dashboard = () => (
+  <QueryClientProvider client={queryClient}>
+    <DashboardClean />
+  </QueryClientProvider>
+);
 
-jest.useFakeTimers()
+jest.useFakeTimers();
 
 describe('Dashboard', () => {
-  it('renders correctly', () => {
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Dashboard />
-      </QueryClientProvider>
-    );
+  test('render title correctly', () => {
+    render(<Dashboard />);
+  });
+
+  it('should render welcome message and user name', async () => {
+    const { getByTestId } = render(<Dashboard />);
+    const welcomeMessage = getByTestId('welcomeMessage');
+    const userName = getByTestId('welcomeMessage');
+    expect(welcomeMessage).toBeDefined();
+    expect(userName).toBeDefined();
   });
 });

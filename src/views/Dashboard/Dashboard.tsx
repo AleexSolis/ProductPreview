@@ -39,8 +39,7 @@ const Dashboard: FC<DashboardProps> = () => {
       <Text style={styles.message} testID="welcomeMessage">
         Bienvenido de vuelta!
       </Text>
-      <Text style={styles.user}>Ruben Rodriguez</Text>
-
+      <Text testID="userName" style={styles.user}>Ruben Rodriguez</Text>
       {isLoading ? (
         <ActivityIndicator style={styles.loadingContainer} size="large" />
       ) : (
