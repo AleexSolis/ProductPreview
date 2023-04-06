@@ -40,10 +40,12 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     lineHeight: 22,
     paddingBottom: 10,
+    paddingLeft: 10,
   },
   points: {
     fontSize: 18,
     fontWeight: '800',
+    paddingLeft: 10,
   },
   buttonContainer: {
     height: 50,
