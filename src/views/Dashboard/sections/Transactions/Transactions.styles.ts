@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    flex: 1,
+    flex: 18,
     paddingBottom: 43,
     paddingTop: 20,
   },

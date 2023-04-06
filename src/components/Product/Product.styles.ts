@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     paddingLeft: 23,
+    fontWeight: '800',
   },
 });
 
