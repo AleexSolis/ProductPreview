@@ -1,34 +1,43 @@
 import { FC } from 'react';
-import { Image, Text, View } from 'react-native';
+import { GestureResponderEvent, Image, Text, TouchableOpacity, View } from 'react-native';
 import styles from './Product.styles';
 import moment from 'moment';
 import 'moment/locale/es';
 
 moment.locale('es');
 
-interface CardProps {
+interface ProductProps {
   createdAt: Date;
   isRedemption: boolean;
   name: string;
+  onPress?: (event: GestureResponderEvent) => void;
   points: number;
   urlImage: string;
 }
 
-const Card: FC<CardProps> = ({ createdAt, isRedemption, name, points, urlImage }) => {
+const Product: FC<ProductProps> = ({
+  createdAt,
+  isRedemption,
+  name,
+  onPress,
+  points,
+  urlImage,
+}) => {
   const date = moment(createdAt).format('DD [de] MMMM, YYYY');
   const symbolColor = isRedemption ? '#FF0000' : '#00B833';
-  
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity testID='cardContainer' style={styles.container} onPress={onPress}>
       <Image
         style={styles.image}
         source={{
           uri: urlImage,
         }}
+        testID='productImage'
       />
       <View style={styles.textContainer}>
         <Text style={styles.productName}>{name}</Text>
-        <Text style={styles.productDate}>{date}</Text>
+        <Text testID='productDate' style={styles.productDate}>{date}</Text>
       </View>
       <View style={styles.rightContainer}>
         <View style={styles.pointsContainer}>
@@ -37,8 +46,8 @@ const Card: FC<CardProps> = ({ createdAt, isRedemption, name, points, urlImage }
         </View>
         <Text style={styles.icon}>{'>'}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
-export default Card;
+export default Product;
