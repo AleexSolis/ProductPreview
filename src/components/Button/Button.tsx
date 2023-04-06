@@ -3,14 +3,15 @@ import { GestureResponderEvent, StyleProp, Text, TextStyle, TouchableOpacity, Vi
 import styles from './Button.styles';
 
 interface ButtonProps {
+  fontStyle?: StyleProp<TextStyle>;
   label: string;
   onPress?: (event: GestureResponderEvent) => void;
-  fontStyle?: StyleProp<TextStyle>;
+  testID?: string;
 }
 
-const Button: FC<ButtonProps> = ({ label, onPress, fontStyle }) => {
+const Button: FC<ButtonProps> = ({ label, onPress, fontStyle, testID }) => {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity style={styles.button} onPress={onPress} testID={testID}>
       <Text style={fontStyle || styles.buttonText}>{label}</Text>
     </TouchableOpacity>
   );

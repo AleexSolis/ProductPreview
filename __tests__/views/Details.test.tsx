@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
 import { ProductContext } from '../../src/context/ProductContext';
-import { Details as DetailsClean } from '../../src/views';
+import { Details } from '../../src/views';
 import moment from 'moment';
 import { Product } from '../../src/types';
 
@@ -26,15 +26,15 @@ const product = {
   createdAt: new Date().toDateString(),
 };
 
-const Details = ({ selectedProduct }: { selectedProduct: Product | undefined }) => (
-  <ProductContext.Provider value={{ selectedProduct, setSelectedProduct: () => null }}>
-    <DetailsClean />
+const DetailsWrapper = ({ selectedProduct }: { selectedProduct: Product | undefined }) => (
+  <ProductContext.Provider value={{ selectedProduct, setSelectedProduct: jest.fn() }}>
+    <Details />
   </ProductContext.Provider>
 );
 
 describe('Details component', () => {
   it('renders correctly with selected product', () => {
-    const { getByText, getByTestId } = render(<Details selectedProduct={product} />);
+    const { getByText, getByTestId } = render(<DetailsWrapper selectedProduct={product} />);
     expect(getByTestId('date').props.children).toEqual(
       `Comprado el ${moment(product.createdAt, 'DD [de] MMMM, YYYY').format('DD [de] MMMM, YYYY')}`
     );
@@ -43,13 +43,13 @@ describe('Details component', () => {
   });
 
   it('renders "Not found" message when there is no selected product', () => {
-    const { getByText } = render(<Details selectedProduct={undefined} />);
+    const { getByText } = render(<DetailsWrapper selectedProduct={undefined} />);
 
     expect(getByText('Not found')).toBeDefined();
   });
 
   it('calls goBack function when "Aceptar" button is pressed', () => {
-    const { getByText } = render(<Details selectedProduct={product} />);
+    const { getByText } = render(<DetailsWrapper selectedProduct={product} />);
 
     fireEvent.press(getByText('Aceptar'));
     expect(mockedNavigation.goBack).toHaveBeenCalled();

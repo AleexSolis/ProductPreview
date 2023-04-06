@@ -8,15 +8,16 @@ interface TransactionsProps {
   title?: string;
   products?: Array<ProductType>;
   onProductPress?: (product: ProductType) => void;
+  testID?: string;
 }
 
 const defaultProps = {
   title: 'Tus Movimientos',
 };
 
-const Transactions: FC<TransactionsProps> = ({ title, products, onProductPress }) => {
+const Transactions: FC<TransactionsProps> = ({ title, products, onProductPress, testID }) => {
   return (
-    <View style={styles.sectionContainer}>
+    <View style={styles.sectionContainer} testID={testID}>
       <Text style={styles.title}>{title}</Text>
       <View style={styles.cardsContainer}>
         {products ? (

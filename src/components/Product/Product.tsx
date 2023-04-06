@@ -17,7 +17,7 @@ interface ProductProps {
 const Product: FC<ProductProps> = ({ data, onPress, testID }) => {
   const { createdAt, image, is_redemption, points, product } = data;
   const [urlImage, setUrlImage] = useState<string>();
-  const date = moment(createdAt).format('DD [de] MMMM, YYYY');
+  const date = moment(createdAt, 'DD [de] MMMM, YYYY').format('DD [de] MMMM, YYYY');
   const symbolColor = is_redemption ? '#FF0000' : '#00B833';
 
   const onPressProduct = () => {

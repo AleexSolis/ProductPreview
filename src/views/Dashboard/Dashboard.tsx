@@ -56,18 +56,18 @@ const Dashboard: FC<DashboardProps> = () => {
         <ActivityIndicator style={styles.loadingContainer} size="large" />
       ) : (
         <>
-          <Points month="Diciembre" points={totalPoints || 0} />
-          <Transactions products={products} onProductPress={goToDetails} />
+          <Points testID="points" month="Diciembre" points={totalPoints || 0} />
+          <Transactions testID="transactions" products={products} onProductPress={goToDetails} />
         </>
       )}
       <View style={styles.buttonContainer}>
         {filter === 'all' ? (
           <View style={styles.buttonsContainer}>
-            <Button fontStyle={styles.button} label="Ganados" onPress={filterByWins} />
-            <Button fontStyle={styles.button} label="Canjeados" onPress={filterByRedeemed} />
+            <Button testID="wins" fontStyle={styles.button} label="Ganados" onPress={filterByWins} />
+            <Button testID="redeemed" fontStyle={styles.button} label="Canjeados" onPress={filterByRedeemed} />
           </View>
         ) : (
-          <Button label="Todos" onPress={removeFilters} />
+          <Button testID="all" label="Todos" onPress={removeFilters} />
         )}
       </View>
     </View>
