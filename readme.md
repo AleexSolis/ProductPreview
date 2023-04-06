@@ -1,6 +1,8 @@
 # Product Preview
 
-Breve descripción del proyecto
+Aplicación móvil desarrollada en React Native que permite a los usuarios visualizar las transacciones realizadas y el total de puntos generados con ellos. La aplicación muestra una lista de productos con información detallada sobre cada transacción realizada, incluyendo el tipo de transacción (ganado o canjeado), la fecha y la cantidad de puntos generados.
+
+Adicional, la aplicación cuenta con una funcionalidad de filtrado que permite a los usuarios buscar productos por nombre y ver las transacciones relacionadas con ellos.
 
 ## Requerimientos
 
@@ -32,5 +34,5 @@ Breve descripción del proyecto
 
 ## Capturas de Pantalla
 
-![Captura de pantalla 1](./screenshots/Dashboard-Figma.png)
-![Captura de pantalla 2](./screenshots/Details-Figma.png)
+
+<img src="./screenshots/Dashboard-Figma.png" width="350"> <img src="./screenshots/Details-Figma.png" width="350">
