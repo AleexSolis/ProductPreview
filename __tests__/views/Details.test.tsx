@@ -36,7 +36,7 @@ describe('Details component', () => {
   it('renders correctly with selected product', () => {
     const { getByText, getByTestId } = render(<DetailsWrapper selectedProduct={product} />);
     expect(getByTestId('date').props.children).toEqual(
-      `Comprado el ${moment(product.createdAt, 'DD [de] MMMM, YYYY').format('DD [de] MMMM, YYYY')}`
+      `El ${moment(product.createdAt, 'DD [de] MMMM, YYYY').format('DD [de] MMMM, YYYY')}`
     );
     expect(getByText(`Con esta compra acumulaste`)).toBeDefined();
     expect(getByText(`${product.points} puntos`)).toBeDefined();

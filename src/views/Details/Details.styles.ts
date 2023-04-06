@@ -21,27 +21,29 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
   },
   textContainer: {
+    backgroundColor: 'white',
+    borderRadius: 10,
     flex: 1,
-    paddingVertical: 32,
+    marginVertical: 20,
+    paddingHorizontal: 10,
+    paddingVertical: 12,
   },
   subTitles: {
     color: '#9B9898',
     fontSize: 14,
     fontWeight: '800',
     lineHeight: 19,
-    paddingBottom: 19,
+    paddingBottom: 10,
   },
   date: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '800',
     lineHeight: 22,
-    paddingBottom: 20,
+    paddingBottom: 10,
   },
   points: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: '800',
-    lineHeight: 33,
-    paddingTop: 19,
   },
   buttonContainer: {
     height: 50,
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     fontSize: 16,
     lineHeight: 22,
-    color: '#FFFFFF'
+    color: '#FFFFFF',
   },
 });
 
