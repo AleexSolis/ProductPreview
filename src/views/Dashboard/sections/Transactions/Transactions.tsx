@@ -43,7 +43,7 @@ const Transactions: FC<TransactionsProps> = ({
         <TextInput
           testID="filer"
           style={styles.input}
-          placeholder="Filter"
+          placeholder="Buscar Producto"
           value={filter}
           onChangeText={handleChangeText}
           onEndEditing={handleFilterSubmit}

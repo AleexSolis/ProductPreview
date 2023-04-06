@@ -55,7 +55,7 @@ const DashboardWrapper = () => (
 
 describe('Dashboard', () => {
   it('render dashboard', async () => {
-    const { getByText, getByTestId, queryByText } = render(<DashboardWrapper />);
+    const { getByText, getByTestId } = render(<DashboardWrapper />);
 
     expect(getByText('Bienvenido de vuelta!')).not.toBeNull();
 
@@ -95,5 +95,17 @@ describe('Dashboard', () => {
     expect(getByText('Product 1')).not.toBeNull();
     expect(queryByText('Product 2')).toBeNull();
     expect(getByText('Product 3')).not.toBeNull();   
+  });
+
+  it('search correctly', async () => {
+    const { getByText, getByTestId, queryByText } = render(<DashboardWrapper />);
+
+    const searchInput = getByTestId('filer');
+    fireEvent.changeText(searchInput, "Product 2");
+    fireEvent(searchInput, 'onEndEditing');
+
+    expect(queryByText('Product 1')).toBeNull();
+    expect(getByText('Product 2')).not.toBeNull();
+    expect(queryByText('Product 3')).toBeNull();
   });
 });
