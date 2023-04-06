@@ -22,11 +22,12 @@ const Transactions: FC<TransactionsProps> = ({ title, products }) => {
           <ScrollView style={styles.scrollContainer}>
             {products.map((product) => (
               <Product
-                key={product.id}
                 createdAt={new Date(product.createdAt)}
                 isRedemption={product.is_redemption}
+                key={product.id}
                 name={product.product}
                 points={product.points}
+                testID="product"
                 urlImage={product.image}
               />
             ))}

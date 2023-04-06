@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
-import { Points } from '../../../../src/views/Dashboard/sections/Points';
 import { render, screen } from '@testing-library/react-native';
+import { Points } from '../../../../src/views/Dashboard/sections/Points';
 
 describe('Points', () => {
   const testProps = {
@@ -11,6 +11,12 @@ describe('Points', () => {
 
   it('renders correctly', () => {
     render(<Points {...testProps} />);
+  });
+
+  test('render title correctly', () => {
+    const { getByText } = render(<Points {...testProps} title="Tus Puntos" />);
+    const titleElement = getByText('Tus Puntos');
+    expect(titleElement).toBeDefined();
   });
 
   it('check the format of the points', () => {
