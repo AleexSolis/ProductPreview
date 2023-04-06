@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   productName: {
     fontWeight: '800',
-    fontSize: 14,
+    fontSize: 12,
   },
   productDate: {
     fontWeight: '400',
@@ -40,10 +40,10 @@ const styles = StyleSheet.create({
   },
   points: {
     fontWeight: '800',
-    fontSize: 16,
+    fontSize: 14
   },
   icon: {
-    paddingLeft: 23,
+    paddingLeft: 5,
     fontWeight: '800',
   },
 });

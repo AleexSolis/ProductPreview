@@ -19,6 +19,7 @@ const Product: FC<ProductProps> = ({ data, onPress, testID }) => {
   const [urlImage, setUrlImage] = useState<string>();
   const date = moment(createdAt, 'DD [de] MMMM, YYYY').format('DD [de] MMMM, YYYY');
   const symbolColor = is_redemption ? '#FF0000' : '#00B833';
+  const formatPoints = new Intl.NumberFormat('en-US').format(points);
 
   const onPressProduct = () => {
     if (onPress) onPress({ ...data, image: urlImage || 'https://placehold.co/640x480' });
@@ -54,7 +55,7 @@ const Product: FC<ProductProps> = ({ data, onPress, testID }) => {
       <View style={styles.rightContainer}>
         <View style={styles.pointsContainer}>
           <Text style={{ ...styles.symbol, color: symbolColor }}>{is_redemption ? '-' : '+'}</Text>
-          <Text style={styles.points}>{points}</Text>
+          <Text style={styles.points}>{formatPoints}</Text>
         </View>
         <Text style={styles.icon}>{'>'}</Text>
       </View>
