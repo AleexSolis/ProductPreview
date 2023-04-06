@@ -4,7 +4,7 @@ import styles from './Product.styles';
 import moment from 'moment';
 import 'moment/locale/es';
 
-moment.locale('es');
+moment.defineLocale('es', null);
 
 interface ProductProps {
   createdAt: Date;
