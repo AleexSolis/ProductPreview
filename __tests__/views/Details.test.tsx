@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
 import { ProductContext } from '../../src/context/ProductContext';
 import { Details as DetailsClean } from '../../src/views';
 import moment from 'moment';
@@ -7,10 +7,14 @@ import { Product } from '../../src/types';
 
 const mockedNavigation = {
   goBack: jest.fn(),
+  dispatch: jest.fn(),
 };
 
 jest.mock('@react-navigation/native', () => ({
   useNavigation: () => mockedNavigation,
+  CommonActions: {
+    setParams: () => jest.fn(),
+  },
 }));
 
 const product = {
