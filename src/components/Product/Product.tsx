@@ -1,9 +1,10 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import styles from './Product.styles';
 import moment from 'moment';
 import 'moment/locale/es';
 import { Product as ProductType } from '../../types';
+import { getImageFromLoremFlickr } from '../../utils/image';
 
 moment.defineLocale('es', null);
 
@@ -15,12 +16,21 @@ interface ProductProps {
 
 const Product: FC<ProductProps> = ({ data, onPress, testID }) => {
   const { createdAt, image, is_redemption, points, product } = data;
+  const [urlImage, setUrlImage] = useState<string>();
   const date = moment(createdAt).format('DD [de] MMMM, YYYY');
   const symbolColor = is_redemption ? '#FF0000' : '#00B833';
 
   const onPressProduct = () => {
-    if (onPress) onPress(data);
+    if (onPress) onPress({ ...data, image: urlImage || 'https://placehold.co/640x480' });
   };
+
+  useEffect(() => {
+    const urlImage = async () => {
+      const url = await getImageFromLoremFlickr(image);
+      setUrlImage(url);
+    };
+    urlImage();
+  }, []);
 
   return (
     <TouchableOpacity
@@ -31,7 +41,7 @@ const Product: FC<ProductProps> = ({ data, onPress, testID }) => {
       <Image
         style={styles.image}
         source={{
-          uri: image,
+          uri: urlImage ? urlImage : 'https://placehold.co/640x480',
         }}
         testID="productImage"
       />
