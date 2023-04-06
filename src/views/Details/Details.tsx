@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Text, View, Image } from 'react-native';
 import moment from 'moment';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, CommonActions } from '@react-navigation/native';
 import styles from './Details.styles';
 import { useProductContext } from '../../context/ProductContext';
 import { Button } from '../../components';
@@ -21,6 +21,10 @@ const Details: FC = () => {
   }
   const date = moment(selectedProduct.createdAt, 'DD [de] MMMM, YYYY').format('DD [de] MMMM, YYYY');
 
+  useEffect(() => {
+    navigation.dispatch(CommonActions.setParams({ name: selectedProduct.product }));
+  }, [selectedProduct.product]);
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -28,7 +32,7 @@ const Details: FC = () => {
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.subTitles}>Detalles del Producto</Text>
-        <Text style={styles.date} testID='date'>{`Comprado el ${date}`}</Text>
+        <Text style={styles.date} testID="date">{`Comprado el ${date}`}</Text>
         <Text style={styles.subTitles}>Con esta compra acumulaste</Text>
         <Text style={styles.points}>{`${selectedProduct.points} puntos`}</Text>
       </View>

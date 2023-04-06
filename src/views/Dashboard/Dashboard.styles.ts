@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 40,
     flexDirection: 'column',
+    marginTop: 20
   },
   message: {
     fontWeight: '800',
