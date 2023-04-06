@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { Dashboard } from './src/views';
+import { ProductProvider } from './src/context/ProductContext';
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 2 } },
@@ -15,14 +16,13 @@ interface AppProps {}
 const App: FC<AppProps> = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Dashboard"
-            component={Dashboard}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <ProductProvider>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Dashboard" component={Dashboard} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ProductProvider>
     </QueryClientProvider>
   );
 };
