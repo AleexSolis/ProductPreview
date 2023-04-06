@@ -4,23 +4,26 @@ import { Product } from '../../src/components';
 
 describe('Product', () => {
   const mockProduct = {
-    createdAt: new Date(),
-    isRedemption: false,
-    name: 'Product Name',
-    points: 100,
-    urlImage: 'https://placehold.co/640x480',
+    data: {
+      id: '1',
+      createdAt: new Date().toISOString(),
+      is_redemption: false,
+      product: 'Product Name',
+      points: 100,
+      image: 'https://placehold.co/640x480',
+    },
   };
   const mockOnPress = jest.fn();
 
   it('should render with correct product information', async () => {
     const { getByText, getByTestId } = render(<Product {...mockProduct} />);
-    expect(getByText(mockProduct.name)).toBeDefined();
+    expect(getByText(mockProduct.data.product)).toBeDefined();
     expect(getByTestId('productDate').props.children).toEqual(expect.any(String));
-    expect(getByText(mockProduct.points.toString())).toBeDefined();
+    expect(getByText(mockProduct.data.points.toString())).toBeDefined();
     const image = getByTestId('productImage');
 
     await waitFor(() => {
-      expect(image.props.source.uri).toEqual(mockProduct.urlImage);
+      expect(image.props.source.uri).toEqual(mockProduct.data.image);
     });
   });
 

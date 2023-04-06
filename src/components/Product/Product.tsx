@@ -1,51 +1,49 @@
 import { FC } from 'react';
-import { GestureResponderEvent, Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import styles from './Product.styles';
 import moment from 'moment';
 import 'moment/locale/es';
+import { Product as ProductType } from '../../types';
 
 moment.defineLocale('es', null);
 
 interface ProductProps {
-  createdAt: Date;
-  isRedemption: boolean;
-  name: string;
-  onPress?: (event: GestureResponderEvent) => void;
-  points: number;
+  data: ProductType;
+  onPress?: (product: ProductType) => void;
   testID?: string;
-  urlImage: string;
 }
 
-const Product: FC<ProductProps> = ({
-  createdAt,
-  isRedemption,
-  name,
-  onPress,
-  points,
-  testID,
-  urlImage,
-}) => {
+const Product: FC<ProductProps> = ({ data, onPress, testID }) => {
+  const { createdAt, image, is_redemption, points, product } = data;
   const date = moment(createdAt).format('DD [de] MMMM, YYYY');
-  const symbolColor = isRedemption ? '#FF0000' : '#00B833';
+  const symbolColor = is_redemption ? '#FF0000' : '#00B833';
+
+  const onPressProduct = () => {
+    if (onPress) onPress(data);
+  };
 
   return (
-    <TouchableOpacity testID={testID || 'cardContainer'} style={styles.container} onPress={onPress}>
+    <TouchableOpacity
+      testID={testID || 'cardContainer'}
+      style={styles.container}
+      onPress={onPressProduct}
+    >
       <Image
         style={styles.image}
         source={{
-          uri: urlImage,
+          uri: image,
         }}
         testID="productImage"
       />
       <View style={styles.textContainer}>
-        <Text style={styles.productName}>{name}</Text>
+        <Text style={styles.productName}>{product}</Text>
         <Text testID="productDate" style={styles.productDate}>
           {date}
         </Text>
       </View>
       <View style={styles.rightContainer}>
         <View style={styles.pointsContainer}>
-          <Text style={{ ...styles.symbol, color: symbolColor }}>{isRedemption ? '-' : '+'}</Text>
+          <Text style={{ ...styles.symbol, color: symbolColor }}>{is_redemption ? '-' : '+'}</Text>
           <Text style={styles.points}>{points}</Text>
         </View>
         <Text style={styles.icon}>{'>'}</Text>
