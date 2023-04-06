@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginLeft: 53,
     marginRight: 54,
-    marginVertical: 20,
+    marginTop: 20,
     paddingBottom: 49,
     paddingTop: 21,
     shadowColor: 'rgba(0, 0, 0, 0.5)',
