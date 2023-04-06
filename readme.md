@@ -32,5 +32,5 @@ Breve descripción del proyecto
 
 ## Capturas de Pantalla
 
-![Captura de pantalla 1](./screenshots/Dashboard-Figma.png)
-![Captura de pantalla 2](./screenshots/Details-Figma.png)
+![Captura de pantalla 1](./screenshots/Dashboard-Version-2.png)
+![Captura de pantalla 2](./screenshots/Details-Version-2.png.png)
