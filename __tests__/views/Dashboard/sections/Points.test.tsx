@@ -22,6 +22,6 @@ describe('Points', () => {
   it('check the format of the points', () => {
     render(<Points {...testProps} />);
 
-    expect(screen.getByText(/(\d{1,3},)*\.(\d{2})\s(pts)/)).toBeDefined();
+    expect(screen.getByText(/(\d{1,3},)*\s(pts)/)).toBeDefined();
   });
 });

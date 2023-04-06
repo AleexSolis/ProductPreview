@@ -14,7 +14,7 @@ const defaultProps = {
 };
 
 const Points: FC<PointsProps> = ({ month, points, title, testID }) => {
-  const formatPoints = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2 }).format(points);
+  const formatPoints = new Intl.NumberFormat('en-US').format(points);
   return (
     <View style={styles.sectionContainer} testID={testID}>
       <Text style={styles.title}>{title}</Text>

@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     marginLeft: 53,
     marginRight: 54,
     marginTop: 20,
-    paddingBottom: 49,
+    paddingBottom: 40,
     paddingTop: 21,
     shadowColor: 'rgba(0, 0, 0, 0.5)',
     shadowOffset: {
@@ -32,9 +32,9 @@ const styles = StyleSheet.create({
   },
   points: {
     color: 'white',
-    fontSize: 32,
+    fontSize: 30,
     fontWeight: '800',
-    paddingTop: 7,
+    paddingTop: 10,
   },
   title: {
     color: '#9B9898',
