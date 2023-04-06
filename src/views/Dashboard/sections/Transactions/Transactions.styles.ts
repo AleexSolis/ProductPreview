@@ -12,10 +12,12 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   cardsContainer: {
+    borderRadius: 10,
     paddingHorizontal: 15,
     paddingTop: 28,
     paddingBottom: 25,
-  }
+    width: '100%',
+  },
 });
 
 export default styles;

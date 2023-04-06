@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     columnGap: 11,
     justifyContent: 'flex-start',
     width: '100%',
+    marginVertical: 4
   },
   image: {
     width: 45,
