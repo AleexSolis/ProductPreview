@@ -2,18 +2,11 @@ import { FC } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import styles from './Transactions.styles';
 import { Product } from '../../../../components';
+import { Product as ProductType } from '../../../../types';
 
-interface Products {
-  createdAt: string;
-  product: string;
-  points: number;
-  image: string;
-  is_redemption: boolean;
-  id: string;
-}
 interface TransactionsProps {
   title?: string;
-  products: Array<Products>;
+  products?: Array<ProductType>;
 }
 
 const defaultProps = {
@@ -25,18 +18,24 @@ const Transactions: FC<TransactionsProps> = ({ title, products }) => {
     <View style={styles.sectionContainer}>
       <Text style={styles.title}>{title}</Text>
       <View style={styles.cardsContainer}>
-        <ScrollView style={styles.scrollContainer}>
-          {products.map((product) => (
-            <Product
-              key={product.id}
-              createdAt={new Date(product.createdAt)}
-              isRedemption={product.is_redemption}
-              name={product.product}
-              points={product.points}
-              urlImage={product.image}
-            />
-          ))}
-        </ScrollView>
+        {products ? (
+          <ScrollView style={styles.scrollContainer}>
+            {products.map((product) => (
+              <Product
+                key={product.id}
+                createdAt={new Date(product.createdAt)}
+                isRedemption={product.is_redemption}
+                name={product.product}
+                points={product.points}
+                urlImage={product.image}
+              />
+            ))}
+          </ScrollView>
+        ) : (
+          <View style={styles.emptyContainer}>
+            <Text style={styles.empty}>Actualmente no tienes movimientos.</Text>
+          </View>
+        )}
       </View>
     </View>
   );

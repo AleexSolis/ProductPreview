@@ -23,6 +23,15 @@ const styles = StyleSheet.create({
     marginTop: 23,
     paddingHorizontal: 15,
   },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  empty: {
+    fontSize: 14,
+    fontWeight: '800',
+    textAlign: 'center',
+  },
 });
 
 export default styles;
